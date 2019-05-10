@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { FormControl, FormGroup } from '@angular/forms'
 import { from } from 'rxjs'
 import { map } from 'rxjs/operators/'
 import { Observable } from 'rxjs'
@@ -12,19 +13,26 @@ import { BallsGeneratorService } from './../services/balls-generator.service'
 })
 export class ListBallsComponent implements OnInit {
   // source = from([1, 2, 29, 40, 50, 43, 8, 10])
-  showResultat: Boolean
-  balls$: Array<Number> //Observable<any>
+  // formulaire = new FormControl('')
   // error: String
+  /*
+    getBalls() {
+      return BallsGeneratorService.getAllBalls()
+    }
+  */
+
+  showResultat: Boolean
+  balls$: Array<any> //Observable<any>
+  resultatBouleMax: Number
   constructor(private ballsGenerator: BallsGeneratorService) {}
-  /*  showBalls() {
-    return BallsGeneratorService.getAllBalls()
-  } */
+
   reset() {
     this.showResultat = false
-    console.log('reset')
   }
-  findBouleMax(containerBoules) {
-    console.log(containerBoules)
+  findBouleMax(arrayOfNumber) {
+    console.log(`La boule ${Math.max(...arrayOfNumber)} est la plus lourde`)
+    this.showResultat = true
+    return Math.max(...arrayOfNumber)
   }
   ngOnInit() {
     // this.balls = [1, 2, 29, 40, 50, 43, 8, 10]
@@ -35,8 +43,8 @@ export class ListBallsComponent implements OnInit {
         error => (this.error = error.statusText)
       ) */
     // this.ballsGenerator.getAllBalls().subscribe(data => console.log(data))
-    this.balls$ = [1, 2, 29, 40, 50, 43, 8, 10]
-    this.showResultat = true
-    // resultatBouleMax
+    this.balls$ = [1, 2, 29, 40, 5, 43, 8, 10]
+    this.showResultat = false
+    this.resultatBouleMax = this.findBouleMax(this.balls$)
   }
 }

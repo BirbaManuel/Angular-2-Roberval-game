@@ -1,35 +1,30 @@
-<p>
-  list-balls works!
-</p>
-<ul *ngFor="let ball of balls">
-  <li>{{ balls$ }}</li>
-</ul>
-
 <section class="stage">
   <figure class="ball">
     <span class="shadow"></span>
-    <span class="eight one"></span>
+    <span id="heavyweight" class="eight one"></span>
   </figure>
 </section>
+
+<!-- <input type="text" [formControl]="formulaire" /> -->
+
 <div id="containerBoule">
-  <!-- <div id="containerBoule" ng-model="containerBoules"> -->
-  <div class="circle" ng-repeat="boule in containerBoules">
+  <div class="circle" *ngFor="let ball of balls$">
     <div class="insideCircle">
-      <span>{{ balls$ }}</span>
+      <span>{{ ball }}</span>
     </div>
   </div>
 </div>
 <div id="containerBalance">
   <div id="label">balance Roberval</div>
   <div id="containerButtonBalance">
-    <button (click)="findBouleMax(containerBoules)">Exécuter</button>
+    <button (click)="findBouleMax(balls$)">Exécuter</button>
     <button (click)="reset()">Reset</button>
   </div>
 </div>
 <div *ngIf="showResultat" id="containerResultat">
-  C'est la boule
-  <span ng-model="resultatBouleMax">"{{ resultatBouleMax }}"</span>
-  qui est la plus lourde! Solution trouvée en
-  <span ng-model="resultatIteration">{{ resultatIteration }}</span>
-  itérations
+  <label
+    >C'est la boule : "{{ resultatBouleMax }}" qui est la plus lourde!
+  </label>
+  <br />
+  <label>Solution trouvée en : "{{ resultatIteration }}" itérations</label>
 </div>
