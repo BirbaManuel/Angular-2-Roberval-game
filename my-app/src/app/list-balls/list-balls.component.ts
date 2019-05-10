@@ -12,13 +12,20 @@ import { BallsGeneratorService } from './../services/balls-generator.service'
 })
 export class ListBallsComponent implements OnInit {
   // source = from([1, 2, 29, 40, 50, 43, 8, 10])
-  balls: Array<Number> //Observable<any>
+  showResultat: Boolean
+  balls$: Array<Number> //Observable<any>
   // error: String
   constructor(private ballsGenerator: BallsGeneratorService) {}
   /*  showBalls() {
     return BallsGeneratorService.getAllBalls()
   } */
-
+  reset() {
+    this.showResultat = false
+    console.log('reset')
+  }
+  findBouleMax(containerBoules) {
+    console.log(containerBoules)
+  }
   ngOnInit() {
     // this.balls = [1, 2, 29, 40, 50, 43, 8, 10]
     // this.balls.pipe(map(val => val + 10))
@@ -28,6 +35,8 @@ export class ListBallsComponent implements OnInit {
         error => (this.error = error.statusText)
       ) */
     // this.ballsGenerator.getAllBalls().subscribe(data => console.log(data))
-    this.balls = [1, 2, 29, 40, 50, 43, 8, 10]
+    this.balls$ = [1, 2, 29, 40, 50, 43, 8, 10]
+    this.showResultat = true
+    // resultatBouleMax
   }
 }
