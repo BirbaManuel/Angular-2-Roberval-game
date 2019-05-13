@@ -1,34 +1,39 @@
 <app-heavyweight-ball></app-heavyweight-ball>
-
 <!-- <input type="text" [formControl]="formulaire" /> -->
-<form
+<div>
+  <label
+    >poids:
+    <input [(ngModel)]="ball.poids" placeholder="poids de votre ball" />
+  </label>
+</div>
+<!-- <form
   #myform="ngForm"
   (ngSubmit)="log(myform.value)"
   class="form form-register"
->
+  >
   <div class="form-field">
     <label class="user" for="register-username"
-      ><span class="hidden">Name{{ balls$[0] }}</span></label
+    ><span class="hidden">Name</span></label
     >
     <input
-      name="poids1"
-      type="input"
-      class="form-input"
-      placeholder="value"
-      ngModel
-      value="balls$[0]"
+    name="poids1"
+    type="input"
+    class="form-input"
+    placeholder="value"
+    ngModel
+    value="2"
     />
     <input
-      name="poids2"
-      type="input"
-      class="form-input"
-      placeholder="value"
-      ngModel
-      value="2"
+    name="poids2"
+    type="input"
+    class="form-input"
+    placeholder="value"
+    ngModel
+    value="2"
     />
     <button type="submit">processe</button>
   </div>
-</form>
+</form> -->
 
 <div id="containerBoule">
   <div class="circle" *ngFor="let ball of balls$">
@@ -51,3 +56,6 @@
   <br />
   <label>Solution trouvée en : "{{ resultatIteration }}" itération</label>
 </div>
+<h2>ball details</h2>
+<div>id : {{ ball.id }}</div>
+<div>poids: {{ ball.poids }}</div>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { FormControl, FormGroup } from '@angular/forms'
+import { Ball } from './../ball'
+/* import { FormControl, FormGroup } from '@angular/forms'
 import { from } from 'rxjs'
 import { map } from 'rxjs/operators/'
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs' */
 
 import { BallsGeneratorService } from './../services/balls-generator.service'
 import { HeavyweightBallComponent } from './../heavyweight-ball/heavyweight-ball.component'
@@ -25,6 +26,7 @@ export class ListBallsComponent implements OnInit {
   showResultat: Boolean
   balls$: Array<any> //Observable<any>
   resultatBouleMax: Number
+  ball: Ball = { id: 1, poids: 10 }
   constructor(private ballsGenerator: BallsGeneratorService) {}
   log(e) {
     console.log(e)
