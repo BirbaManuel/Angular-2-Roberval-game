@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Ball } from './../ball'
+// import { Ball } from './../ball'
 import { BALLS } from './../mock-balls'
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms'
 /*
@@ -21,7 +21,8 @@ export class ListBallsComponent implements OnInit {
   resultatIteration: Number
   showResultat: Boolean
   resultatBouleMax: Number
-  balls$: Ball[]
+  balls$: any
+  // balls$: Ball[]
   ballss: Observable<any>
   constructor(
     private fb: FormBuilder,
@@ -30,9 +31,7 @@ export class ListBallsComponent implements OnInit {
   log(e) {
     console.log(e)
   }
-  getAllBalls(): any {
-    return this.ballsGenerator.getAllBalls()
-  }
+
   reset() {
     this.showResultat = false
   }
@@ -57,7 +56,8 @@ export class ListBallsComponent implements OnInit {
       poids: this.fb.array([]),
     })
     this.ballsGenerator.getAllBalls().subscribe(sucess => {
-      this.balls$ = sucess.data
+      // this.balls$ = ('data'in sucess)? sucess.data
+      console.log(sucess)
     })
     // this.balls$ = BALLS => Balls mocked
     this.showResultat = false
