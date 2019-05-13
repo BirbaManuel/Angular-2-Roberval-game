@@ -16,10 +16,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy()
   })
 
-  it(`should have as title 'Tour of Heroes'`, () => {
+  it(`should have as title 'Roberval Game'`, () => {
     const fixture = TestBed.createComponent(AppComponent)
     const app = fixture.debugElement.componentInstance
-    expect(app.title).toEqual('Tour of Heroes')
+    expect(app.title).toEqual('Roberval Game')
   })
 
   it('should render title in a h1 tag', () => {
@@ -27,7 +27,7 @@ describe('AppComponent', () => {
     fixture.detectChanges()
     const compiled = fixture.debugElement.nativeElement
     expect(compiled.querySelector('h1').textContent).toContain(
-      'Welcome to Tour of Heroes!'
+      'Welcome to Roberval Game!'
     )
   })
 })
