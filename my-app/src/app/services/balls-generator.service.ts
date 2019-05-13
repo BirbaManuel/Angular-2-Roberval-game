@@ -8,6 +8,7 @@ export class BallsGeneratorService {
   constructor(private http: HttpClient) {}
 
   getAllBalls() {
-    return this.http.get('data/numbers.json')
+    // return this.http.get('data/numbers.json')
+    return this.http.get('http://localhost:8000/')
   }
 }
