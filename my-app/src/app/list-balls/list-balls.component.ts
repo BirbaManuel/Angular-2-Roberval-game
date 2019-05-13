@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators/'
 import { Observable } from 'rxjs'
 
 import { BallsGeneratorService } from './../services/balls-generator.service'
+import { HeavyweightBallComponent } from './../heavyweight-ball/heavyweight-ball.component'
 
 @Component({
   selector: 'app-list-balls',
@@ -20,19 +21,24 @@ export class ListBallsComponent implements OnInit {
       return BallsGeneratorService.getAllBalls()
     }
   */
-
+  resultatIteration: Number
   showResultat: Boolean
   balls$: Array<any> //Observable<any>
   resultatBouleMax: Number
   constructor(private ballsGenerator: BallsGeneratorService) {}
-
+  log(e) {
+    console.log(e)
+  }
   reset() {
     this.showResultat = false
   }
+
   findBouleMax(arrayOfNumber) {
     console.log(`La boule ${Math.max(...arrayOfNumber)} est la plus lourde`)
     this.showResultat = true
-    return Math.max(...arrayOfNumber)
+    this.resultatBouleMax = maxArrayNumber(arrayOfNumber)
+    //return Math.max(...arrayOfNumber)
+    this.resultatIteration = 1
   }
   ngOnInit() {
     // this.balls = [1, 2, 29, 40, 50, 43, 8, 10]
@@ -45,6 +51,10 @@ export class ListBallsComponent implements OnInit {
     // this.ballsGenerator.getAllBalls().subscribe(data => console.log(data))
     this.balls$ = [1, 2, 29, 40, 5, 43, 8, 10]
     this.showResultat = false
-    this.resultatBouleMax = this.findBouleMax(this.balls$)
+    //this.resultatBouleMax = this.findBouleMax(this.balls$)
   }
 }
+function maxArrayNumber(arrayOfNumber) {
+  return Math.max(...arrayOfNumber)
+}
+export const maxArrayNumberFCT = maxArrayNumber
