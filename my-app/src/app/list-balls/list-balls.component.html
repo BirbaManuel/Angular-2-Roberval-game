@@ -59,5 +59,34 @@
   <label>Solution trouvée en : "{{ resultatIteration }}" itération</label>
 </div>
 <h2>ball details</h2>
+
+<form [formGroup]="ballForm">
+  <span><input size="2" type="input" formControlName="titre"/></span>
+</form>
+
+<form [formGroup]="ballForm">
+  Value:{{ ballForm.value | json }}
+  <hr />
+  <mat-form-field>
+    <input matInput placeholder="titre" formControlName="titre" />
+  </mat-form-field>
+  <div formGroupName="setBall">
+    <div
+      *ngFor="let ball of ballForm.setBall; let i = index"
+      [formGroupName]="i"
+    >
+      test{{ ball }}
+    </div>
+    <!-- <mat-form-field>
+      <input matInput placeholder="boule..." formControlName="poids1" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="boule..." formControlName="poids2" />
+    </mat-form-field> -->
+  </div>
+  <!-- <mat-form-field>
+    <input matInput placeholder="boule2" formGrouplName="poids2" />
+  </mat-form-field> -->
+</form>
 <!-- <div>id : {{ ball.id }}</div>
 <div>poids: {{ ball.poids }}</div> -->

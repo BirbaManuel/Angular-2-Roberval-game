@@ -4,6 +4,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
 import { MatInputModule } from '@angular/material/input'
 import { MatSelectModule } from '@angular/material/select'
 import { MatButtonModule } from '@angular/material/button'
@@ -25,6 +27,7 @@ import { HeavyweightBallComponent } from './heavyweight-ball/heavyweight-ball.co
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     MatCheckboxModule,
     MatInputModule,
     MatSelectModule,
