@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { Ball } from './../ball'
 import { BALLS } from './../mock-balls'
-/* import { FormControl, FormGroup } from '@angular/forms'
+import { FormBuilder, FormGroup } from '@angular/forms'
+/*
 import { from } from 'rxjs'
 import { map } from 'rxjs/operators/'
 import { Observable } from 'rxjs' */
@@ -16,12 +17,16 @@ import { Observable } from 'rxjs'
   styleUrls: ['./list-balls.component.css'],
 })
 export class ListBallsComponent implements OnInit {
+  myForm: FormGroup
   resultatIteration: Number
   showResultat: Boolean
   resultatBouleMax: Number
   balls$: Ball[]
   ballss: Observable<any>
-  constructor(private ballsGenerator: BallsGeneratorService) {}
+  constructor(
+    private fb: FormBuilder,
+    private ballsGenerator: BallsGeneratorService
+  ) {}
   log(e) {
     console.log(e)
   }
