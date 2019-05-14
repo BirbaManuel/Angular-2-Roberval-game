@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core'
-// import { Ball } from './../ball'
+import { Ball } from './../ball'
 import { BALLS } from './../mock-balls'
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms'
 /*
 import { from } from 'rxjs'
 import { map } from 'rxjs/operators/'
-import { Observable } from 'rxjs' */
+*/
 
 import { BallsGeneratorService } from './../services/balls-generator.service'
 import { HeavyweightBallComponent } from './../heavyweight-ball/heavyweight-ball.component'
@@ -28,6 +28,7 @@ export class ListBallsComponent implements OnInit {
     private fb: FormBuilder,
     private ballsGenerator: BallsGeneratorService
   ) {}
+
   log(e) {
     console.log(e)
   }
@@ -50,7 +51,7 @@ export class ListBallsComponent implements OnInit {
       poids4: '',
     })
     this.ballForm = this.fb.group({
-      titre: 'Robervall',
+      titre: 'Robervall-game',
       // setBall: this.fb.array([]),
       setBall: ballUnit,
       poids: this.fb.array([]),
@@ -61,18 +62,17 @@ export class ListBallsComponent implements OnInit {
         console.log(sucess)
       },
       error => {
-        console.log(error)
         this.balls$ = BALLS
+        console.error(error)
       }
     )
-    // this.balls$ = BALLS => Balls mocked
     this.showResultat = false
     this.ballForm.valueChanges.subscribe(sucess => {
-      console.log(sucess)
+      this.log(sucess)
     })
   }
 }
-function maxArrayNumber(arrayOfNumber) {
+function maxArrayNumber(arrayOfNumber: Ball[]) {
   //only one iteration
   return Math.max(
     ...arrayOfNumber.map(el => {
