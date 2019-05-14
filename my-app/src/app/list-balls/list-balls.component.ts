@@ -56,7 +56,7 @@ export class ListBallsComponent implements OnInit {
       poids: this.fb.array([]),
     })
     this.ballsGenerator.getAllBalls().subscribe(sucess => {
-      // this.balls$ = ('data'in sucess)? sucess.data
+      this.balls$ = sucess['data']
       console.log(sucess)
     })
     // this.balls$ = BALLS => Balls mocked
