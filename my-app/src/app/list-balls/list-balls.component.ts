@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core'
 import { Ball } from './../ball'
 import { BALLS } from './../mock-balls'
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms'
+import {
+  FormBuilder,
+  FormGroup,
+  FormArray,
+  Validators,
+  FormControl,
+} from '@angular/forms'
 /*
 import { from } from 'rxjs'
 import { map } from 'rxjs/operators/'
@@ -18,6 +24,7 @@ import { Observable } from 'rxjs'
 })
 export class ListBallsComponent implements OnInit {
   ballForm: FormGroup
+  setBallsControl: FormControl
   resultatIteration: Number
   showResultat: Boolean
   resultatBouleMax: Number
@@ -44,17 +51,20 @@ export class ListBallsComponent implements OnInit {
     this.resultatIteration = 1
   }
   ngOnInit() {
-    const ballUnit = this.fb.group({
-      poids1: '',
-      poids2: '',
-      poids3: '',
-      poids4: '',
-    })
+    // const ballUnitSchema = this.fb.group({
+    //   poids1: '',
+    //   poids2: '',
+    //   poids3: '',
+    //   poids4: '',
+    // })
+    this.setBallsControl = this.fb.control(
+      'setBalls',
+      Validators.pattern('^(?:[1-9]|[1-4][0-9]|50)$') // nombre de 0 à 50
+    )
     this.ballForm = this.fb.group({
       titre: 'Robervall-game',
-      // setBall: this.fb.array([]),
-      setBall: ballUnit,
-      poids: this.fb.array([]),
+      setBalls: this.setBallsControl,
+      phones: this.fb.array([]),
     })
     this.ballsGenerator.getAllBalls().subscribe(
       sucess => {
@@ -70,6 +80,29 @@ export class ListBallsComponent implements OnInit {
     this.ballForm.valueChanges.subscribe(sucess => {
       this.log(sucess)
     })
+  }
+  get phoneForms() {
+    return this.ballForm.get('phones') as FormArray
+  }
+  get setBallsForms() {
+    return this.ballForm.get('setBalls')
+  }
+  addPhone() {
+    const phone = this.fb.group({
+      poids: [],
+    })
+    this.phoneForms.push(phone)
+  }
+  deletePhone(i) {
+    this.phoneForms.removeAt(i)
+  }
+
+  async submitHandler() {
+    const formValue = this.ballForm.value
+    try {
+      await console.log(formValue)
+      // await console.log(formValue)
+    } catch (err) {}
   }
 }
 function maxArrayNumber(arrayOfNumber: Ball[]) {
