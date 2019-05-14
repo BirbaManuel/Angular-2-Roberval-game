@@ -1,66 +1,31 @@
 <app-heavyweight-ball></app-heavyweight-ball>
 
-<!-- begin heavyweight block -->
-<div id="containerBoule">
-  <div class="circle" *ngFor="let ball of balls$">
-    <div class="insideCircle">
-      <span><input size="2" type="input" value="{{ ball.poids }}"/></span>
-    </div>
-  </div>
-</div>
-<!-- end heavyweight block -->
-
-<!-- begin proced block -->
-<div id="containerBalance">
-  <div id="label">balance Roberval</div>
-  <div id="containerButtonBalance">
-    <button (click)="findBouleMax(balls$)">Exécuter</button>
-    <button (click)="reset()">Reset</button>
-  </div>
-</div>
-<div *ngIf="showResultat" id="containerResultat">
-  <label
-    >C'est la boule : "{{ resultatBouleMax }}" qui est la plus lourde!
-  </label>
-  <br />
-  <label>Solution trouvée en : "{{ resultatIteration }}" itération</label>
-</div>
-<h2>ball details</h2>
-<!-- end proced block -->
-
 <form [formGroup]="ballForm" (ngSubmit)="submitHandler()">
-  Value:{{ ballForm.value | json }} valide : {{ ballForm.valide | json }}
-  <hr />
-  <mat-form-field>
-    <input matInput placeholder="" formControlName="setBalls" [value]="0" />
-    <mat-error *ngIf="setBallsControl">
-      la valeur de la boule dois être comprise entre 1 à 50
-    </mat-error>
-  </mat-form-field>
-  <div formArrayName="phones">
-    <div
-      *ngFor="let phone of phoneForms.controls; let i = index"
-      [formGroupName]="i"
-    >
-      <mat-form-field>
-        <input matInput placeholder="" formControlName="poids" />
-      </mat-form-field>
-      <button mat-raised-button color="warn" (click)="deletePhone(i)">
-        Delete
-      </button>
+  <div id="containerBoule">
+    <div class="circle" *ngFor="let ball of balls$; let i = index">
+      <div class="insideCircle">
+        <span
+          ><input
+            formControlName="boule{{ i }}"
+            size="2"
+            type="input"
+            value="{{ ball.poids }}"
+        /></span>
+      </div>
     </div>
-    <button
-      mat-raised-button
-      [disabled]="ballForm.invalid"
-      color="primary"
-      (click)="addPhone()"
-    >
-      Exécuter recheche
-    </button>
   </div>
-  <div formGroupName="setBalls">
-    <!-- <mat-form-field>
-      <input matInput formControlName="poids1" />
-    </mat-form-field> -->
+  <div id="containerBalance">
+    <div id="label">balance Roberval</div>
+    <div id="containerButtonBalance">
+      <button (click)="(ngSubmit)">Exécuter</button>
+      <button (click)="reset()">Reset</button>
+    </div>
+  </div>
+  <div *ngIf="showResultat" id="containerResultat">
+    <label
+      >C'est la boule : "{{ resultatBouleMax }}" qui est la plus lourde!
+    </label>
+    <br />
+    <label>Solution trouvée en : "{{ resultatIteration }}" itération</label>
   </div>
 </form>
