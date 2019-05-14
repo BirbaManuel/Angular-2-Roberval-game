@@ -1,0 +1,48 @@
+#containerBoule {
+  background-color: cyan;
+  width: 80%;
+  height: auto;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#containerBalance {
+  background-color: pink;
+  width: 80%;
+  padding: 15px;
+}
+
+#containerResultat {
+  width: 80%;
+  padding: 15px;
+}
+.circle {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background: #6a281c;
+  display: inline-block;
+}
+.insideCircle {
+  width: 50px;
+  height: 50px;
+  background: #fffcf4;
+  top: 24%;
+  left: 24%;
+  display: block;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  transform: translate(40%, 40%);
+}
+.insideCircle span {
+  color: black;
+  top: 15%;
+  font-family: Arial Narrow;
+  font-weight: bolder;
+  font-size: 36px;
+  position: relative;
+  display: block;
+  text-align: center;
+}

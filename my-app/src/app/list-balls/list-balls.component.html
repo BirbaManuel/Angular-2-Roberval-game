@@ -1,0 +1,31 @@
+<app-heavyweight-ball></app-heavyweight-ball>
+
+<form [formGroup]="ballForm" (ngSubmit)="submitHandler()">
+  <div id="containerBoule">
+    <div class="circle" *ngFor="let ball of balls$; let i = index">
+      <div class="insideCircle">
+        <span
+          ><input
+            formControlName="boule{{ i }}"
+            size="2"
+            type="input"
+            value="{{ ball.poids }}"
+        /></span>
+      </div>
+    </div>
+  </div>
+  <div id="containerBalance">
+    <div id="label">balance Roberval</div>
+    <div id="containerButtonBalance">
+      <button (click)="(ngSubmit)">Exécuter</button>
+      <button (click)="reset()">Reset</button>
+    </div>
+  </div>
+  <div *ngIf="showResultat" id="containerResultat">
+    <label
+      >C'est la boule : "{{ resultatBouleMax }}" qui est la plus lourde!
+    </label>
+    <br />
+    <label>Solution trouvée en : "{{ resultatIteration }}" itération</label>
+  </div>
+</form>
